@@ -1,0 +1,538 @@
+/* Fonts loaded via <link> in index.html */
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — ThesisCraft Architectural Atelier
+   ============================================================ */
+:root {
+  /* ── Backgrounds ── */
+  --canvas:           #0E0F10;
+  --surface:          #121314;
+  --surface-panel:    #161718;
+  --surface-card:     #18191b;
+  --surface-elevated: #1E1F21;
+  --surface-overlay:  #242628;
+  --surface-hi:       #292a2b;
+  --surface-highest:  #343536;
+  --surface-input:    #1f2125;
+  --surface-input-hover: #25282d;
+
+  /* ── Borders ── */
+  --border:           #27282B;
+  --border-active:    #3E4044;
+
+  /* ── Accent: Cyan ── */
+  --accent:           #00D8FE;
+  --accent-bright:    #61DAFB;
+  --accent-deep:      #149ECA;
+  --accent-dark:      #087EA4;
+  --accent-dim:       rgba(0, 216, 254, 0.12);
+  --accent-border:    rgba(0, 216, 254, 0.35);
+
+  /* ── Text ── */
+  --text-bone:        #F5F4EE;
+  --text-cement:      #9A9892;
+  --text-charcoal:    #5F6063;
+  --text-on-surface:  #e3e2e3;
+
+  /* ── Semantic colors ── */
+  --color-success:    #34d399;
+  --color-error:      #f87171;
+  --color-secondary:  #c9c6c0;
+  --color-warning:    #fbbf24;
+
+  /* ── Spacing ── */
+  --sp-2xs:   4px;
+  --sp-xs:    8px;
+  --sp-sm:    12px;
+  --sp-md:    16px;
+  --sp-lg:    24px;
+  --sp-xl:    32px;
+  --sp-2xl:   48px;
+  --sp-3xl:   72px;
+  --margin-page: 32px;
+
+  /* ── Radius ── */
+  --r-xs:  2px;
+  --r-sm:  4px;
+  --r-md:  6px;
+  --r-full: 12px;
+}
+
+/* ============================================================
+   GLOBAL RESET + BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.005em;
+  font-weight: 400;
+  background-color: var(--surface);
+  color: var(--text-bone);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overscroll-behavior: none;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   TYPOGRAPHY SCALE
+   ============================================================ */
+
+/* Display */
+.display-lg {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .display-lg {
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Headlines */
+.headline-lg {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px;
+  line-height: 38px;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+.headline-md {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+.headline-sm {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+/* Body */
+.body-lg {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+.body-md {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.005em;
+  font-weight: 400;
+}
+
+/* Code / Labels */
+.label-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+.label-index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.page-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--margin-page);
+}
+
+/* ============================================================
+   MATERIAL SYMBOLS ICON BASELINE
+   ============================================================ */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+  vertical-align: middle;
+  user-select: none;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* ============================================================
+   BUTTON SYSTEM
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  border-radius: var(--r-xs);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Primary — Cyan filled */
+.btn-primary {
+  background: var(--accent);
+  color: #0B0D0E;
+  padding: 10px 20px;
+  border-color: var(--accent);
+  box-shadow: 0 1px 4px rgba(0, 216, 254, 0.2);
+}
+.btn-primary:hover {
+  background: var(--accent-bright);
+  border-color: var(--accent-bright);
+}
+.btn-primary:active { opacity: 0.9; }
+
+/* Secondary — Dark filled with border */
+.btn-secondary {
+  background: var(--surface-input);
+  color: var(--text-bone);
+  padding: 9px 18px;
+  border-color: var(--border);
+}
+.btn-secondary:hover {
+  background: var(--surface-hi);
+  border-color: var(--border-active);
+}
+
+/* Ghost */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-cement);
+  padding: 8px 14px;
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  color: var(--text-bone);
+  background: var(--surface-input);
+}
+
+/* Sizes */
+.btn-sm { font-size: 11px; padding: 6px 12px; letter-spacing: 0.06em; }
+.btn-lg { font-size: 12px; padding: 12px 24px; letter-spacing: 0.1em; }
+.btn-xl { font-size: 12px; padding: 14px 28px; letter-spacing: 0.1em; }
+
+.btn:disabled { opacity: 0.4; pointer-events: none; }
+
+/* ============================================================
+   CARD / SURFACE
+   ============================================================ */
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xs);
+  transition: border-color 0.15s ease;
+}
+.card:hover { border-color: var(--border-active); }
+
+.card-inset {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xs);
+}
+
+/* ============================================================
+   REGISTRATION TAG / SECTION LABEL
+   ============================================================ */
+.reg-tag {
+  display: inline-block;
+  background: #1a1b1e;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 2px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-cement);
+}
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+}
+
+/* ============================================================
+   CHIP TOGGLE (profile form)
+   ============================================================ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 8px 14px;
+  border-radius: var(--r-xs);
+  border: 1px solid var(--border);
+  background: var(--surface-input);
+  color: var(--text-bone);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.chip:hover {
+  border-color: var(--border-active);
+  background: var(--surface-input-hover);
+}
+.chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0B0D0E;
+}
+
+/* ============================================================
+   RADIO SEGMENT (Experience / Timeline)
+   ============================================================ */
+.radio-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  color: var(--text-cement);
+  background: transparent;
+  border: none;
+  transition: all 0.15s ease;
+  border-radius: var(--r-xs);
+}
+.radio-seg:hover { color: var(--text-bone); }
+.radio-seg.active {
+  background: var(--surface-hi);
+  color: var(--text-bone);
+  font-weight: 600;
+  border: 1px solid var(--border-active);
+}
+
+/* ============================================================
+   SCORE BAR
+   ============================================================ */
+.score-track {
+  width: 100%;
+  height: 3px;
+  background: var(--border);
+  border-radius: 0;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.score-fill {
+  height: 100%;
+  transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   VERTICAL TIMELINE
+   ============================================================ */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  padding-bottom: 24px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 14px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-active);
+}
+.timeline-item:last-child::before { display: none; }
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--surface-hi);
+  border: 2px solid var(--border-active);
+  box-shadow: 0 0 0 3px var(--surface-card);
+}
+.timeline-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.timeline-dot.done {
+  background: var(--color-success);
+  border-color: var(--color-success);
+}
+
+/* ============================================================
+   FORM INPUT
+   ============================================================ */
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xs);
+  color: var(--text-bone);
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+  resize: vertical;
+}
+.form-input:focus { border-color: var(--accent); }
+.form-input::placeholder { color: var(--text-charcoal); }
+
+/* ============================================================
+   METRIC MATRIX
+   ============================================================ */
+.metric-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.metric-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-cement);
+}
+.metric-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-bone);
+}
+
+/* ============================================================
+   NAV LINK
+   ============================================================ */
+.nav-link {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 14px;
+  color: var(--text-cement);
+  transition: color 0.15s ease;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.nav-link:hover { color: var(--text-bone); }
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--canvas); }
+::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-deep); }
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+::selection {
+  background: var(--accent);
+  color: #0A0C10;
+}
+
+/* ============================================================
+   FOCUS VISIBLE
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.text-accent   { color: var(--accent); }
+.text-cement   { color: var(--text-cement); }
+.text-bone     { color: var(--text-bone); }
+.text-charcoal { color: var(--text-charcoal); }
+.text-success  { color: var(--color-success); }
+.text-error    { color: var(--color-error); }
+
+.hairline-top    { border-top: 1px solid var(--border); }
+.hairline-bottom { border-bottom: 1px solid var(--border); }
+
+.dot-grid {
+  background-image: radial-gradient(#F6F4EE 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.045;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-accent {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.animate-fade-up { animation: fadeUp 0.45s ease both; }
+.animate-pulse   { animation: pulse-accent 2s ease-in-out infinite; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .page-container { padding: 0 16px; }
+  :root { --margin-page: 16px; }
+
+  .headline-lg { font-size: 24px; line-height: 30px; }
+  .display-lg  { font-size: 30px; line-height: 36px; }
+
+  .btn-xl { font-size: 11px; padding: 11px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
